@@ -2,3 +2,4 @@
 /shelf/
 /.idea/
 .DS_Store
+/docker/volumes/mysql/datadir/
