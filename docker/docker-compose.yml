@@ -14,3 +14,20 @@ services:
     security_opt:
       - seccomp:unconfined
 
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=my-secret-pw
+      - SUPERUSER_NAME=superuser
+      - SUPERUSER_PASSWORD=superuser-pw
+      - DEVELOP_DATABASE_NAME=laraveldev
+      - DEVELOP_USER_NAME=devuser
+      - DEVELOP_USER_PASSWORD=devuser-pw
+    volumes:
+      - ./volumes/mysql/datadir:/var/lib/mysql
+      - ./volumes/mysql/initdb.d:/docker-entrypoint-initdb.d
+      - ./volumes/mysql/initdata:/initdata
+
