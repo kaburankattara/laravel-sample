@@ -1,4 +1,8 @@
 version: "3.8"
+
+networks:
+  some-network:
+
 services:
   centos:
     container_name: laravel-app
@@ -13,6 +17,10 @@ services:
       - SYS_ADMIN
     security_opt:
       - seccomp:unconfined
+    networks:
+      - some-network
+    depends_on:
+      - mysql
 
   mysql:
     image: mysql:8.0
@@ -30,4 +38,19 @@ services:
       - ./volumes/mysql/datadir:/var/lib/mysql
       - ./volumes/mysql/initdb.d:/docker-entrypoint-initdb.d
       - ./volumes/mysql/initdata:/initdata
+    networks:
+      - some-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - mysql:mysql
+    ports:
+      - 8080:80
+    environment:
+      MYSQL_USERNAME: root
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      PMA_HOST: mysql
+    networks:
+      - some-network
 
