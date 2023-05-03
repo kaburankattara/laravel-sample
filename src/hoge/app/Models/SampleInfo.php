@@ -10,9 +10,11 @@ class SampleInfo extends Model
     public function get()
     {
         $query = SampleInfo::query();
-        $query = $query->select("id", "sample_no", "order_no");
-        $query = $query->from("sample");
-        $query = $query->where('id', '=', '1');
+        $query
+        ->select("s.id", "s.sample_no", "order_no")
+        ->from("sample as s")
+        ->join("sample_element as se", "s.id", "=", "se.sample_no")
+        ->where('s.id', '=', '1');
         return $query->get();    
     }
 }
