@@ -11,7 +11,11 @@ class SampleInfo extends Model
     {
         $query = SampleInfo::query();
         $query
-        ->select("s.id", "s.sample_no", "order_no")
+        ->select("s.id as sample_id"
+        , "s.sample_no"
+        , "order_no"
+        , "se.id as sample_element_id"
+        , "se.status")
         ->from("sample as s")
         ->join("sample_element as se", "s.id", "=", "se.sample_no")
         ->where('s.id', '=', '1');
