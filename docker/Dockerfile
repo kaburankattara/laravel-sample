@@ -13,7 +13,7 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 RUN yum -y update \
 yum -y install epel-release && \
 yum -y install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm && \
-yum -y install httpd git zip unzip gcc php74 php74-php php74-php-bcmath php74-php-ctype php74-php-json php74-php-mbstring php74-php-openssl php74-php-PDO php74-php-tokenizer php74-php-xml && \
+yum -y install httpd git zip unzip gcc php74 php74-php php74-php-bcmath php74-php-ctype php74-php-json php74-php-mbstring php74-php-openssl php74-php-tokenizer php74-php-xml && \
 yum -y --enablerepo=remi,epel install php74-php-pdo && \
 yum -y --enablerepo=remi,epel install php74-php-mysql && \
 ln -s /usr/bin/php74 /usr/bin/php && \
