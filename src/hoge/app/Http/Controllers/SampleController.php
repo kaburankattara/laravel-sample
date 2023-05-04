@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SampleInfo;
+use App\Domains\Samples;
 
 class SampleController extends Controller
 {
@@ -11,6 +12,7 @@ class SampleController extends Controller
     {
         $sample = new SampleInfo;
         $message = $sample->get();
+        $samples = new Samples($message);
         // $message = 'Hello, world!';
         return view('sample', compact('message'));
     }
