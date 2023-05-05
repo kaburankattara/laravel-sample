@@ -73,6 +73,8 @@
                     <input type="submit" value="検索"/>
                 </form>
                 @if (!$samples->isEmpty())
+                <br/>
+                <span>更新日：{{$samples->getDateTime()}}</span><br/>
                 <table>
                     <th>サンプル番号</th>
                     <th>ステータス</th>

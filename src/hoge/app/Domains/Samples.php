@@ -44,6 +44,10 @@ class Samples
         $this->sampleList = $sampleList;
     }
     
+    public function getDateTime()
+    {
+        return $this->timeStamp->format('Y-m-d H:i:s');
+    }
     public function isEmpty()
     {
         return count($this->sampleList) == 0;
