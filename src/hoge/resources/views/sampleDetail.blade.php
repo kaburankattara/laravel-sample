@@ -67,6 +67,9 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <h1>{{ $message }}</h1>
+                <form action="/hoge/public/sample" style="text-align:right;">
+                    <input type="submit" value="一覧に戻る"/>
+                </form>
                 <div>
                     <table style="display:inline-block;">
                         <th>種類</th>
