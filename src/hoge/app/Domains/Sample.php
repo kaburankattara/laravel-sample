@@ -41,6 +41,15 @@ class Sample
 
     public function getStatus()
     {
-        return "1/5";
+        $bumbo = count($this->sampleElementList);
+
+        $bunshi = 0;
+        foreach ($this->sampleElementList as $sampleElement) {
+            if ($sampleElement->isFin()) {
+                $bunshi++;
+            }
+        }
+
+        return $bunshi."/".$bumbo;
     }
 }

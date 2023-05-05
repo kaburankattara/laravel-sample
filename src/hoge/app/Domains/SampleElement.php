@@ -23,4 +23,9 @@ class SampleElement
         $this->id = $sampleModel->sample_element_id;
         $this->status = $sampleModel->status;
     }
+
+    public function isFin()
+    {
+        return $this->status == 1;
+    }
 }
