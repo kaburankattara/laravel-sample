@@ -12,7 +12,7 @@ class SampleController extends Controller
     {
         $sample = new SampleInfo;
         $message = $sample->get();
-        $message = json_encode(new Samples($message));
+        $message = json_encode(Samples::createInstance($message));
         // $message = 'Hello, world!';
         return view('sample', compact('message'));
     }

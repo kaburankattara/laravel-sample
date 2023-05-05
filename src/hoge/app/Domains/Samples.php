@@ -6,6 +6,17 @@ use App\Domains\Sample;
 
 class Samples
 {
+    
+    public static function createEmptyInstance()
+    {
+        return new Samples(null);
+    }
+    
+    public static function createInstance($sampleModelList)
+    {
+        return new Samples($sampleModelList);
+    }
+
     public $timeStamp;
     public $sampleList;
 

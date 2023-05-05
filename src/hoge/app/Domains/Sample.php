@@ -6,6 +6,17 @@ use App\Domains\SampleElement;
 
 class Sample
 {
+    
+    public static function createEmptyInstance()
+    {
+        return new Sample(null);
+    }
+    
+    public static function createInstance($sampleModelList)
+    {
+        return new Sample($sampleModelList);
+    }
+    
     public $id;
     public $sampleNo;
     public $orderNo;
@@ -26,15 +37,5 @@ class Sample
             $sampleElementList[] = SampleElement::createInstance($sampleModel);
         }
         $this->sampleElementList = $sampleElementList;
-    }
-    
-    public static function createEmptyInstance()
-    {
-        return new Sample(null);
-    }
-    
-    public static function createInstance($sampleModelList)
-    {
-        return new Sample($sampleModelList);
     }
 }
