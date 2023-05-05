@@ -72,11 +72,18 @@
                 </form>
                 <div>
                     <table style="display:inline-block;">
-                        <th>種類</th>
-                        <th>要素番号</th>
-                        <th>ステータス</th>
+                        <tr style="background-color: #EEEEEE;">
+                            <th>種類</th>
+                            <th>要素番号</th>
+                            <th>ステータス</th>
+                        </tr>
                         @foreach($sample->sampleElementList as $sampleElement)
+                        @if (!$sampleElement->isFin())
                         <tr>
+                        @endif
+                        @if ($sampleElement->isFin())
+                        <tr style="background-color: #C0C0C0;">
+                        @endif
                             <td>{{$sampleElement->getTypeName()}}</td>
                             <td>{{$sampleElement->id}}</td>
                             <td>{{$sampleElement->getStatus()}}</td>

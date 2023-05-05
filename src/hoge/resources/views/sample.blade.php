@@ -76,8 +76,10 @@
                 <br/>
                 <span>更新日：{{$samples->getDateTime()}}</span><br/>
                 <table>
-                    <th>サンプル番号</th>
-                    <th>ステータス</th>
+                    <tr style="background-color: #EEEEEE;">
+                        <th>サンプル番号</th>
+                        <th>ステータス</th>
+                    </tr>
                     @foreach($samples->sampleList as $sample)
                     <tr>
                         <td><a href="/hoge/public/sampleDetail?sampleId={{$sample->id}}">{{$sample->id}}</a></td>
