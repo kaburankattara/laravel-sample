@@ -2,6 +2,8 @@
 
 namespace App\Domains;
 
+use App\Domains\SampleElement;
+
 class Sample
 {
     public $id;
@@ -9,15 +11,21 @@ class Sample
     public $orderNo;
     public $sampleElementList;
 
-    private function __construct($sampleModel) {
+    private function __construct($sampleModelList) {
 
-        if ($sampleModel == null) {
+        if ($sampleModelList == null) {
             return;
         }
 
-        $this->id = $sampleModel->sample_id;
-        $this->sampleNo = $sampleModel->sample_no;
-        $this->orderNo = $sampleModel->order_no;
+        $this->id = $sampleModelList[0]->sample_id;
+        $this->sampleNo = $sampleModelList[0]->sample_no;
+        $this->orderNo = $sampleModelList[0]->order_no;
+
+        $sampleElementList = array();
+        foreach ($sampleModelList as $sampleModel) {
+            $sampleElementList[] = SampleElement::createInstance($sampleModel);
+        }
+        $this->sampleElementList = $sampleElementList;
     }
     
     public static function createEmptyInstance()
@@ -25,7 +33,7 @@ class Sample
         return new Sample(null);
     }
     
-    public static function createEmpty($sampleModelList)
+    public static function createInstance($sampleModelList)
     {
         return new Sample($sampleModelList);
     }

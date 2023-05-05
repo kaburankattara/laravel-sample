@@ -18,14 +18,19 @@ class Samples
         }
 
         $sampleList = array();
-        $sampleOfNow = Sample::createEmptyInstance();
-        // $sampleIdOfNow = $sampleModelList[0]->sample_id;
+        $sampleModelListOfNow = array();
         foreach ($sampleModelList as $sampleModel) {
-            if ($sampleOfNow->id != $sampleModel->sample_id) {
-                
+            // サンプルIDが変われば、Sampleを生成し、今のリストを初期化する
+            if (count($sampleModelListOfNow) != 0 
+                && $sampleModelListOfNow[0]->sample_id != $sampleModel->sample_id) {
+                $sampleList[] = Sample::createInstance($sampleModelListOfNow);
+                $sampleModelListOfNow = array();
             }
+            $sampleModelListOfNow[] = $sampleModel;
         }
-        // $this->status = $status;
+        $sampleList[] = Sample::createInstance($sampleModelListOfNow);
+
+        $this->sampleList = $sampleList;
     }
     
     public function sample()

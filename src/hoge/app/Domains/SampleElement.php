@@ -4,14 +4,23 @@ namespace App\Domains;
 
 class SampleElement
 {
-    public int $id;
-    public int $sampleId;
-    public int $status;
+    public $id;
+    public $type;
+    public $status;
 
-    function __construct($id, $sampleId, $status) {
-        $this->id = $id;
-        $this->sampleId = $sampleId;
-        $this->status = $status;
+    function __construct($sampleModel) {
+        $this->id = $sampleModel->sample_element_id;
+        $this->status = $sampleModel->status;
+    }
+    
+    public static function createEmptyInstance()
+    {
+        return new SampleElement(null);
+    }
+    
+    public static function createInstance($sampleModel)
+    {
+        return new SampleElement($sampleModel);
     }
 
     public function sample()
