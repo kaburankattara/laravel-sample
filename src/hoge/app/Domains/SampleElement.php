@@ -23,9 +23,4 @@ class SampleElement
         $this->id = $sampleModel->sample_element_id;
         $this->status = $sampleModel->status;
     }
-
-    public function sample()
-    {
-        return $this->hasOne(Sample::class, 'sample_no', 'sample_no');
-    }
 }

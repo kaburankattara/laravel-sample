@@ -10,10 +10,9 @@ class SampleController extends Controller
 {
     public function index()
     {
-        $sample = new SampleInfo;
-        $message = $sample->get();
-        $message = json_encode(Samples::createInstance($message));
-        // $message = 'Hello, world!';
-        return view('sample', compact('message'));
+        $message = 'Hello, world!';
+        $sampleInfo = new SampleInfo;
+        $samples = Samples::createInstance($sampleInfo->get());
+        return view('sample', compact('message', 'samples'));
     }
 }

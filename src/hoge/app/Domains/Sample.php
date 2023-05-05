@@ -38,4 +38,9 @@ class Sample
         }
         $this->sampleElementList = $sampleElementList;
     }
+
+    public function getStatus()
+    {
+        return "1/5";
+    }
 }
