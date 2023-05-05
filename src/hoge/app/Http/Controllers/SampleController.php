@@ -13,7 +13,7 @@ class SampleController extends Controller
         $sampleId = $request->input('sampleId');
         $message = 'Hello, world!';
         $sampleInfo = new SampleInfo;
-        $samples = Samples::createInstance($sampleInfo->get($sampleId));
+        $samples = Samples::createInstance($sampleInfo->findByLike($sampleId));
         return view('sample', compact('message', 'samples'));
     }
 }

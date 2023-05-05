@@ -7,7 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class SampleInfo extends Model
 {
 
-    public function get($sampleId)
+    public function findByLike($sampleId)
+    {
+        return self::find($sampleId, true);
+    }
+
+    public function findByEqual($sampleId)
+    {
+        return self::find($sampleId, false);
+    }
+
+    private function find($sampleId, $isLike)
     {
         $query = SampleInfo::query();
         $query
@@ -20,7 +30,8 @@ class SampleInfo extends Model
         ->join("sample_element as se", "s.id", "=", "se.sample_no");
 
         if (!empty($sampleId)) {
-            $query->where('s.id', '=', $sampleId);
+            $comparisonOperators = $isLike ? 'like' : '=';
+            $query->where('s.id', $comparisonOperators, "%".$sampleId."%");
         }
 
         return $query->get();    
