@@ -8,11 +8,12 @@ use App\Domains\Samples;
 
 class SampleController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $sampleId = $request->input('sampleId');
         $message = 'Hello, world!';
         $sampleInfo = new SampleInfo;
-        $samples = Samples::createInstance($sampleInfo->get());
+        $samples = Samples::createInstance($sampleInfo->get($sampleId));
         return view('sample', compact('message', 'samples'));
     }
 }

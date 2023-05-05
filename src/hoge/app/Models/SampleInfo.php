@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class SampleInfo extends Model
 {
 
-    public function get()
+    public function get($sampleId)
     {
         $query = SampleInfo::query();
         $query
@@ -17,8 +17,12 @@ class SampleInfo extends Model
         , "se.id as sample_element_id"
         , "se.status")
         ->from("sample as s")
-        ->join("sample_element as se", "s.id", "=", "se.sample_no")
-        ->where('s.id', '=', '1');
+        ->join("sample_element as se", "s.id", "=", "se.sample_no");
+
+        if (!empty($sampleId)) {
+            $query->where('s.id', '=', $sampleId);
+        }
+
         return $query->get();    
     }
 }

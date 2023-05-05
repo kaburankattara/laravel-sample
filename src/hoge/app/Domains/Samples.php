@@ -23,7 +23,7 @@ class Samples
     function __construct($sampleModelList) {
 
         $this->timeStamp = new \DateTime();
-        if (empty($sampleModelList)) {
+        if (count($sampleModelList) == 0) {
             $this->sampleList = array();
             return;
         }
@@ -44,8 +44,8 @@ class Samples
         $this->sampleList = $sampleList;
     }
     
-    public function sample()
+    public function isEmpty()
     {
-        return $this->hasOne(Sample::class, 'sample_no', 'sample_no');
+        return count($this->sampleList) == 0;
     }
 }

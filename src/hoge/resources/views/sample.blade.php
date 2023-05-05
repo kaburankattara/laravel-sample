@@ -65,32 +65,25 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
             <div class="content">
                 <h1>{{ $message }}</h1>
+                <form action="/hoge/public/sample">
+                    <span>サンプル番号：</span>
+                    <input type="text" name="sampleId" size="8"/>
+                    <input type="submit" value="検索"/>
+                </form>
+                @if (!$samples->isEmpty())
                 <table>
                     <th>サンプル番号</th>
                     <th>ステータス</th>
-                    @foreach($samples->sampleList as $sample)
-                    <tr>
-                        <td>{{$sample->id}}</td>
-                        <td>{{$sample->getStatus()}}</td>
-                    </tr>
-                    @endforeach
+                        @foreach($samples->sampleList as $sample)
+                        <tr>
+                            <td><a href="/hoge/public/sample">{{$sample->id}}</a></td>
+                            <td>{{$sample->getStatus()}}</td>
+                        </tr>
+                        @endforeach
                 </table>
+                @endif
             </div>
         </div>
     </body>
