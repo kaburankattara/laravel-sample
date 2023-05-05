@@ -16,4 +16,14 @@ class SampleController extends Controller
         $samples = Samples::createInstance($sampleInfo->findByLike($sampleId));
         return view('sample', compact('message', 'samples'));
     }
+
+    public function indexDetail(Request $request)
+    {
+        $sampleId = $request->input('sampleId');
+        $message = 'Hello, world!';
+        $sampleInfo = new SampleInfo;
+        $samples = Samples::createInstance($sampleInfo->findByEqual($sampleId));
+        $sample = $samples->getFirst();
+        return view('sampleDetail', compact('message', 'sample'));
+    }
 }

@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 Route::get('/sample/{sampleId?}', 'SampleController@index');
 
+Route::get('/sampleDetail', 'SampleController@indexDetail');

@@ -48,6 +48,16 @@ class Samples
     {
         return $this->timeStamp->format('Y-m-d H:i:s');
     }
+    
+    public function getFirst()
+    {
+        if (self::isEmpty()) {
+            return Sample::createEmptyInstance();
+        }
+
+        return $this->sampleList[0];
+    }
+
     public function isEmpty()
     {
         return count($this->sampleList) == 0;

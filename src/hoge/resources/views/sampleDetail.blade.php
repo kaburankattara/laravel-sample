@@ -67,25 +67,25 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <h1>{{ $message }}</h1>
-                <form action="/hoge/public/sample">
-                    <span>サンプル番号：</span>
-                    <input type="text" name="sampleId" size="8"/>
-                    <input type="submit" value="検索"/>
-                </form>
-                @if (!$samples->isEmpty())
-                <br/>
-                <span>更新日：{{$samples->getDateTime()}}</span><br/>
-                <table>
-                    <th>サンプル番号</th>
-                    <th>ステータス</th>
-                    @foreach($samples->sampleList as $sample)
-                    <tr>
-                        <td><a href="/hoge/public/sampleDetail?sampleId={{$sample->id}}">{{$sample->id}}</a></td>
-                        <td>{{$sample->getStatus()}}</td>
-                    </tr>
-                    @endforeach
-                </table>
-                @endif
+                <div>
+                    <table style="display:inline-block;">
+                        <th>種類</th>
+                        <th>要素番号</th>
+                        <th>ステータス</th>
+                        @foreach($sample->sampleElementList as $sampleElement)
+                        <tr>
+                            <td>{{$sampleElement->getTypeName()}}</td>
+                            <td>{{$sampleElement->id}}</td>
+                            <td>{{$sampleElement->getStatus()}}</td>
+                        </tr>
+                        @endforeach
+                    </table>
+                    <div style="display:inline-block;width:20px;">
+                    </div>
+                    <div style="display:inline-block;vertical-align:top;">
+                        <p>{{$sample->getStatus()}}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </body>

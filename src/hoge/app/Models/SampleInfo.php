@@ -25,13 +25,15 @@ class SampleInfo extends Model
         , "s.sample_no"
         , "order_no"
         , "se.id as sample_element_id"
+        , "se.type"
         , "se.status")
         ->from("sample as s")
         ->join("sample_element as se", "s.id", "=", "se.sample_no");
 
         if (!empty($sampleId)) {
             $comparisonOperators = $isLike ? 'like' : '=';
-            $query->where('s.id', $comparisonOperators, "%".$sampleId."%");
+            $comparisonWord = $isLike ? "%".$sampleId."%" : $sampleId;
+            $query->where('s.id', $comparisonOperators, $comparisonWord);
         }
 
         return $query->get();    
