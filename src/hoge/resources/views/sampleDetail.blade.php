@@ -66,7 +66,7 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="content">
-                <h1>{{ $message }}</h1>
+                <h1>サンプル詳細画面</h1>
                 <form action="/hoge/public/sample" style="text-align:right;">
                     <input type="submit" value="一覧に戻る"/>
                 </form>
@@ -86,7 +86,7 @@
                         @endif
                             <td>{{$sampleElement->getTypeName()}}</td>
                             <td>{{$sampleElement->id}}</td>
-                            <td>{{$sampleElement->getStatus()}}</td>
+                            <td>{{$sampleElement->getStatusName()}}</td>
                         </tr>
                         @endforeach
                     </table>

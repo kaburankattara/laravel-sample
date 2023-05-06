@@ -66,7 +66,7 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="content">
-                <h1>{{ $message }}</h1>
+                <h1>サンプル一覧画面</h1>
                 <form action="/hoge/public/sample">
                     <span>サンプル番号：</span>
                     <input type="text" name="sampleId" size="8"/>
