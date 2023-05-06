@@ -38,6 +38,7 @@ services:
       - ./volumes/mysql/datadir:/var/lib/mysql
       - ./volumes/mysql/initdb.d:/docker-entrypoint-initdb.d
       - ./volumes/mysql/initdata:/initdata
+      - ./volumes/mysql/etc/mysql/conf.d:/etc/mysql/conf.d
     networks:
       - some-network
 
