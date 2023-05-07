@@ -16,6 +16,7 @@ yum -y install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm && \
 yum -y install httpd git zip unzip gcc php74 php74-php php74-php-bcmath php74-php-ctype php74-php-json php74-php-mbstring php74-php-openssl php74-php-tokenizer php74-php-xml && \
 yum -y --enablerepo=remi,epel install php74-php-pdo && \
 yum -y --enablerepo=remi,epel install php74-php-mysql && \
+yum -y --enablerepo=remi,epel install php74-php-pgsql && \
 ln -s /usr/bin/php74 /usr/bin/php && \
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
 #php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" && \
