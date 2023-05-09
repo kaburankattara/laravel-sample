@@ -67,7 +67,7 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <h1>サンプル一覧画面</h1>
-                <form action="/hoge/public/sample">
+                <form action="/sample">
                     <span>サンプル番号：</span>
                     <input type="text" name="sampleId" size="8"/>
                     <input type="submit" value="検索"/>
@@ -82,7 +82,7 @@
                     </tr>
                     @foreach($samples->sampleList as $sample)
                     <tr>
-                        <td><a href="/hoge/public/sampleDetail?sampleId={{$sample->id}}">{{$sample->id}}</a></td>
+                        <td><a href="/sampleDetail?sampleId={{$sample->id}}">{{$sample->id}}</a></td>
                         <td>{{$sample->getStatus()}}</td>
                     </tr>
                     @endforeach
